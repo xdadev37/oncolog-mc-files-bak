@@ -1,0 +1,33 @@
+services:
+  mc:
+    image: ${REGISTRY}/mc
+    runtime: crun
+    restart: always
+    command: mirror --overwrite /var/files/ oncolog/oncolog-${SUB}-files/
+    configs:
+      - source: mc
+        target: /root/.mc/config.json
+    network_mode: host
+    volumes:
+      - type: volume
+        read_only: true
+        source: files
+        target: /var/files
+      - type: volume
+        read_only: true
+        source: logs
+        target: /var/oncolog-logs
+
+configs:
+  mc:
+    name: mc
+    file: "./config.json"
+
+volumes:
+  files:
+    name: ${SUB}-files
+    external: true
+  logs:
+    name: ${SUB}-logs
+    external: true
+
