@@ -3,7 +3,7 @@ services:
     image: ${REGISTRY}/mc
     runtime: crun
     restart: always
-    command: mirror --overwrite /var/files/ oncolog/oncolog-${SUB}-files/
+    command: mirror --overwrite --watch /var/files/ oncolog/oncolog-${SUB}-files/
     configs:
       - source: mc
         target: /root/.mc/config.json
