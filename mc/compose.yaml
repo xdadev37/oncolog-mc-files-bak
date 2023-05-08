@@ -6,8 +6,6 @@ services:
     container_name: mc-oncolog-files
     entrypoint: tail
     command: -f /dev/null
-    environment:
-      SUB: ${SUB}
     configs:
       - source: mc
         target: /root/.mc/config.json
