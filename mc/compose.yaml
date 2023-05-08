@@ -1,0 +1,22 @@
+services:
+  mc:
+    image: ${REGISTRY}/mc
+    runtime: crun
+    restart: always
+    entrypoint: tail
+    command: -f /dev/null
+    environment:
+      SUB: ${SUB}
+    configs:
+      - source: mc
+        target: /root/.mc/config.json
+    network_mode: host
+    volumes:
+      - type: volume
+        read_only: true
+        source: files
+        target: /var/files
+      - type: volume
+        read_only: true
+        source: logs
+        target: /var/oncolog-logs
