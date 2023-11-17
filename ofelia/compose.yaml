@@ -3,13 +3,12 @@ services:
     image: ${REGISTRY}/ofelia
     runtime: crun
     restart: always
+    network_mode: host
     environment:
       TZ: "Asia/Tehran"
     configs:
       - source: ofelia
         target: /etc/ofelia/config.ini
-    networks:
-      - ingress
     volumes:
       - type: bind
         read_only: true

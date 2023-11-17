@@ -15,7 +15,3 @@ services:
         read_only: true
         source: files
         target: /var/files
-      - type: volume
-        read_only: true
-        source: logs
-        target: /var/oncolog-logs
