@@ -18,5 +18,5 @@ configs:
 
 volumes:
   files:
-    name: files
+    name: ${ROOT_PROJ}_files
     external: true
