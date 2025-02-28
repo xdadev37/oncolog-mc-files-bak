@@ -1,17 +1,11 @@
 services:
   mc:
-    image: ${REGISTRY}/mc
-    runtime: runc
+    image: reg.oncolog.ir/mc
     restart: always
-    container_name: mc-oncolog-files
-    entrypoint: tail
+    container_name: files-backuper
+    entrypoint: /usr/bin/tail
     command: -f /dev/null
-    configs:
-      - source: mc
-        target: /root/.mc/config.json
     network_mode: host
     volumes:
-      - type: volume
-        read_only: true
-        source: files
-        target: /var/files
+      - "./mc/config.json:/root/.mc/config.json"
+      - "files:/var/files:ro"
