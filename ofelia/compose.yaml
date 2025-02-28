@@ -7,5 +7,5 @@ services:
     environment:
       TZ: "Asia/Tehran"
     volumes:
-      "./config.ini:/etc/ofelia/config.ini"
-      "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./config.ini:/etc/ofelia/config.ini"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
